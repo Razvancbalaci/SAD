@@ -1,0 +1,29 @@
+def solucao(S):
+    aberto = []
+    for r in range(len(S)):
+        
+        if S[r]=="(" :
+            aberto.append(")")
+        if S[r]=="[" :
+            aberto.append("]")
+        if S[r]=="{" :
+            aberto.append("}")
+        if S[r]==")" or S[r]=="]" or S[r]=="}" :
+            if S[r]!=aberto[len(aberto)-1]:
+                return 0
+            aberto.pop()
+                   
+    if len(aberto) == 0:
+        return 1
+    else:
+        return 0
+        
+        
+def teste (S):
+    print(S,"-->", solucao(S))
+    
+teste("{[([) (])]}")
+teste("([) ][ ()]")
+teste("[()][()]")
+teste("")
+teste("[(((())))]")
